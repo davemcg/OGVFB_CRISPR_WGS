@@ -6,18 +6,15 @@ Workflow to assess CRISPR targetting with WGS
 Do WGS, align, create bam
 
 ## Step 2
-Run [CRISPRoff](https://rth.dk/resources/crispr/crisproff/) and select the potential hits of "MAJOR", "CRITICAL", or "ONTARGET" to further assess
+Run [CRISPRoff](https://rth.dk/resources/crispr/crisproff/) and select the potential hits of "MAJOR", "CRITICAL", or "ONTARGET" to further assess visually
 
 ## Step 3
-
-Convert output from CRISPRoff to bed file for Crispresso2 run
-
-## Step 4
 
 Make screenshots of all regions in IGV
 
   - Open IGV and load in relevant bam(s) and bed file of coordinates from CRISPRoff
-  - 
+  - Run `bedtools igv` (see below) to get igv script
+  - Run script file in IGV via `Tools - Run Batch Script`
 
 
 
@@ -44,3 +41,9 @@ gRNA1_liftover %>%
   write_tsv(file = '~/Desktop/gRNA1_liftover.bed', col_names = FALSE)
 
 ```
+
+# bedtools igv
+```
+bedtools igv -slop 50 -path /Users/mcgaugheyd/Desktop/ -name -i gRNA1_liftover.bed
+```
+
